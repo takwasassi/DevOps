@@ -1,88 +1,116 @@
 package tn.esprit.rh.achat.services; 
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tn.esprit.rh.achat.entities.Facture;
+import tn.esprit.rh.achat.entities.Operateur;
 import tn.esprit.rh.achat.repositories.FactureRepository;
+import tn.esprit.rh.achat.repositories.OperateurRepository;
+import tn.esprit.rh.achat.services.FactureServiceImpl;
+import tn.esprit.rh.achat.services.IFactureService;
+import tn.esprit.rh.achat.services.IOperateurService;
 
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-@SpringBootTest
-@ExtendWith(MockitoExtension.class)
-public class FactureServiceTest {
+import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(MockitoExtension.class)
+@SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class FactureServiceImplTest {
+
+    @Autowired
+    IFactureService factureService;
+    @Autowired
+    IOperateurService iOperateurService;
     @Mock
     FactureRepository factureRepository;
-
     @InjectMocks
-    FactureServiceImpl factureService;
+    FactureServiceImpl factureServiceImp;
+
+    Facture facture = new Facture((float) 7.4, (float) 99.2,new Date(),new Date(),false, null, null, null);
+    List<Facture> listFacture = new ArrayList<Facture>(){
+        {
+            add(new Facture((float) 6.4, (float) 99.2,new Date(),new Date(),true, null, null, null));
+            add(new Facture((float) 7.9, (float) 99.2,new Date(),new Date(),true, null, null, null));
+        }
+    };
 
     @Test
-    public void testRetrieveFacture() {
+    @Order(1)
+    void addFacture(){
+        Mockito.when(factureRepository.save(facture)).thenReturn(facture);
+        Facture facture1 = factureServiceImp.addFacture(facture);
+        assertNotNull(facture1);
+    }
+    /* @Test
+    @Order(2)
+    void retrieveAllFactures(){
+        Mockito.when(factureRepository.findAll()).thenReturn(listFacture);
+        List<Facture> listFacture1 = factureServiceImp.retrieveAllFactures();
+        assertTrue(listFacture1.size()>0);
+    }
+    @Test
+    @Order(3)
+    void retrieveFacture() {
+        Mockito.when(factureRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(facture));
+        Facture facture1 = factureServiceImp.retrieveFacture(2L);
+        assertNotNull(facture1);
+    }
 
-        Facture facture = new Facture(1L, 154, null, null, null, null, null, null);
+    @Test
+    @Order(4)
+    void cancelFacture(){
+        Mockito.doNothing().when(factureRepository).updateFacture(Mockito.anyLong());
+        factureServiceImp.cancelFacture(1L);
+        Mockito.verify(factureRepository, Mockito.times(1)).updateFacture(1L);
+    }
 
-        facture.setIdFacture(1L);
-
-        Mockito.when(factureRepository.findById(1L)).thenReturn(Optional.of(facture));
-        factureService.retrieveFacture(1L);
-        Assertions.assertNotNull(facture);
-
-        System.out.println(facture);
-        System.out.println(" Retrieve is working correctly...!!");
-
+//    @Test
+//    @Order(6)
+//    void assign(){
+//        FactureServiceImpl fMock = Mockito.mock(FactureServiceImpl.class);
+//        Mockito.doCallRealMethod().when(fMock).assignOperateurToFacture(Mockito.anyLong(), Mockito.anyLong());
+//        factureService.assignOperateurToFacture(1L,1L);
+//        Mockito.verify(fMock, Mockito.times(1)).assignOperateurToFacture(1L,1L);
+//    }
+    @Test
+    @Order(5)
+    void assignOperateurToFacture() {
+        Facture f = new Facture((float) 7.4, (float) 99.2,new Date(),new Date(),false, null, null, null);
+        Operateur o = new Operateur();
+        Facture factureAdded = factureService.addFacture(f);
+        Operateur operateurAdded = iOperateurService.addOperateur(o);
+        factureService.assignOperateurToFacture(operateurAdded.getIdOperateur(),factureAdded.getIdFacture());
+        assertNotNull(iOperateurService.retrieveOperateur(operateurAdded.getIdOperateur()).getFactures());
+        iOperateurService.deleteOperateur(operateurAdded.getIdOperateur());
+        factureRepository.delete(factureAdded);
     }
 
 
-   /* @Test
-   public void createFactureTest()
-    {
-        Facture facture2 = new Facture(2L, 100, null, null, null, null, null, null);
-        facture2.setIdFacture(2L);
 
-        factureService.addFacture(facture2);
-        verify(factureRepository, times(1)).save(facture2);
-        System.out.println(facture2);
-        System.out.println(" Create is working correctly...!!");
-    }
-
-
-    @Test
- public   void getAllFactureTest()
-    {
-        List<Facture> Facturelist = new ArrayList<Facture>() {
-
-            {
-                add(new Facture(30, 100, null, null, null, null, null, null));
-                add(new Facture(40, 200, null, null, null, null, null, null));
-                add(new Facture(50, 300, null, null, null, null, null, null));
-            }};
-
-
-        when(factureService.retrieveAllFactures()).thenReturn(Facturelist);
-        //test
-        List<Facture> factureList = factureService.retrieveAllFactures();
-        assertEquals(3, factureList.size());
-        System.out.println(" Retrieve all is working correctly...!!");
-    }*/
-
-
-
-
+//    @Test
+//    @Order(6)
+//    void pourcentageRecouvrement() {
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        Date date1 = dateFormat.parse("2022-10-25",new ParsePosition(0));
+//        Date date2 = dateFormat.parse("2022-10-26",new ParsePosition(0));
+//        float p = factureService.pourcentageRecouvrement(date1,date2);
+//        assertTrue(p>=0);
+//    }*/
 }
