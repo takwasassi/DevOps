@@ -114,7 +114,7 @@ public class Produit implements Serializable {
 		this.categorieProduit = categorieProduit;
 	}
 	public Produit() {
-		super();
+		
 	}
 	
 	
