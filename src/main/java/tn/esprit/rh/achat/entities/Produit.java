@@ -47,6 +47,11 @@ public class Produit implements Serializable {
 	@ManyToOne
 	@JsonIgnore
 	private CategorieProduit categorieProduit;
+	//mba3d nfas5ou
+	public Produit(String string, String string2, Object object, Object object2, Object object3) {
+		// TODO Auto-generated constructor stub
+	}
+	//
 	public Long getIdProduit() {
 		return idProduit;
 	}
@@ -101,21 +106,7 @@ public class Produit implements Serializable {
 	public void setCategorieProduit(CategorieProduit categorieProduit) {
 		this.categorieProduit = categorieProduit;
 	}
-	public Produit(String codeProduit, String libelleProduit, float prix, Date dateCreation,
-			Date dateDerniereModification) {
-		super();
-		this.codeProduit = codeProduit;
-		this.libelleProduit = libelleProduit;
-		this.prix = prix;
-		this.dateCreation = dateCreation;
-		this.dateDerniereModification = dateDerniereModification;
-		this.stock = stock;
-		this.detailFacture = detailFacture;
-		this.categorieProduit = categorieProduit;
-	}
-	public Produit() {
-		
-	}
+
 	
 	
 	
