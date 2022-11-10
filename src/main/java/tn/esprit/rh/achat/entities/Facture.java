@@ -93,10 +93,12 @@ public class Facture implements Serializable {
 	public void setReglements(Set<Reglement> reglements) {
 		this.reglements = reglements;
 	}
+	
 	public Facture(float montantRemise, float montantFacture, Date dateCreationFacture,
 			Date dateDerniereModificationFacture, Boolean archivee, Set<DetailFacture> detailsFacture,
 			Fournisseur fournisseur, Set<Reglement> reglements) {
 		super();
+		//this.idFacture = idFacture;
 		this.montantRemise = montantRemise;
 		this.montantFacture = montantFacture;
 		this.dateCreationFacture = dateCreationFacture;
