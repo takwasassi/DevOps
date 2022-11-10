@@ -101,6 +101,24 @@ public class Produit implements Serializable {
 	public void setCategorieProduit(CategorieProduit categorieProduit) {
 		this.categorieProduit = categorieProduit;
 	}
+	public Produit(String codeProduit, String libelleProduit, float prix, Date dateCreation,
+			Date dateDerniereModification) {
+		super();
+		this.codeProduit = codeProduit;
+		this.libelleProduit = libelleProduit;
+		this.prix = prix;
+		this.dateCreation = dateCreation;
+		this.dateDerniereModification = dateDerniereModification;
+		this.stock = stock;
+		this.detailFacture = detailFacture;
+		this.categorieProduit = categorieProduit;
+	}
+	public Produit() {
+		super();
+	}
+	
+	
+	
 	
 
 	
