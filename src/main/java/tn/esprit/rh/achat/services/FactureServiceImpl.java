@@ -1,5 +1,7 @@
 package tn.esprit.rh.achat.services;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import tn.esprit.rh.achat.entities.DetailFacture;
 import tn.esprit.rh.achat.entities.Facture;
