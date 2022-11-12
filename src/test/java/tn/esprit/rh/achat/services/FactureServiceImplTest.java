@@ -12,12 +12,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.rh.achat.entities.Facture;
-//import tn.esprit.rh.achat.entities.Operateur;
+import tn.esprit.rh.achat.entities.Operateur;
 import tn.esprit.rh.achat.repositories.FactureRepository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-//import java.util.Optional;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,7 +36,6 @@ class FactureServiceImplTest {
     FactureServiceImpl factureServiceImp;
 
     Facture facture = new Facture((float) 7.2 , (float) 99.2,new Date(),new Date(),false);
-    @SuppressWarnings("serial")
 	List<Facture> listFacture = new ArrayList<Facture>(){
         {
         
@@ -52,7 +51,7 @@ class FactureServiceImplTest {
         Facture facture1 = factureServiceImp.addFacture(facture);
         assertNotNull(facture1);
     }
-   /* @Test
+    @Test
     @Order(2)
     void retrieveAllFactures(){
         Mockito.when(factureRepository.findAll()).thenReturn(listFacture);
@@ -82,8 +81,8 @@ class FactureServiceImplTest {
 //        Mockito.doCallRealMethod().when(fMock).assignOperateurToFacture(Mockito.anyLong(), Mockito.anyLong());
 //        factureService.assignOperateurToFacture(1L,1L);
 //        Mockito.verify(fMock, Mockito.times(1)).assignOperateurToFacture(1L,1L);
-//    }*/
-   /* @Test
+//    }
+    @Test
     @Order(5)
     void assignOperateurToFacture() {
         Facture f = new Facture ( (float) 7.4, (float) 99.2,new Date(),new Date(),false) ;
@@ -94,7 +93,7 @@ class FactureServiceImplTest {
         assertNotNull(iOperateurService.retrieveOperateur(operateurAdded.getIdOperateur()).getFactures());
         iOperateurService.deleteOperateur(operateurAdded.getIdOperateur());
         factureRepository.delete(factureAdded);
-    }*/
+    }
 
 
 
