@@ -108,9 +108,21 @@ public class Facture implements Serializable {
 		this.fournisseur = fournisseur;
 		this.reglements = reglements;
 	}
+	
+	
 	public Facture() {
 		super();
 	}
-
+	public Facture(float montantRemise, float montantFacture, Date dateCreationFacture,
+			Date dateDerniereModificationFacture, Boolean archivee) {
+		super();
+		this.montantRemise = montantRemise;
+		this.montantFacture = montantFacture;
+		this.dateCreationFacture = dateCreationFacture;
+		this.dateDerniereModificationFacture = dateDerniereModificationFacture;
+		this.archivee = archivee;
+	}
+	
+	
 	
 }
