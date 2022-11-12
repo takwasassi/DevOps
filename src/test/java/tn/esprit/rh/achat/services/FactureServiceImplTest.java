@@ -17,7 +17,7 @@ import tn.esprit.rh.achat.repositories.FactureRepository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
+//import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,7 +52,7 @@ class FactureServiceImplTest {
         Facture facture1 = factureServiceImp.addFacture(facture);
         assertNotNull(facture1);
     }
-    @Test
+   /* @Test
     @Order(2)
     void retrieveAllFactures(){
         Mockito.when(factureRepository.findAll()).thenReturn(listFacture);
@@ -82,7 +82,7 @@ class FactureServiceImplTest {
 //        Mockito.doCallRealMethod().when(fMock).assignOperateurToFacture(Mockito.anyLong(), Mockito.anyLong());
 //        factureService.assignOperateurToFacture(1L,1L);
 //        Mockito.verify(fMock, Mockito.times(1)).assignOperateurToFacture(1L,1L);
-//    }
+//    }*/
    /* @Test
     @Order(5)
     void assignOperateurToFacture() {
