@@ -1,5 +1,4 @@
 package tn.esprit.rh.achat.entities;
-
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -57,5 +56,4 @@ public class CategorieProduit implements Serializable {
 		this.produits = produits;
 	}
 	
-	
-}
+	}

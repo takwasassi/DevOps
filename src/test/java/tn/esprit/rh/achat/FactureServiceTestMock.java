@@ -72,6 +72,5 @@ public class FactureServiceTestMock {
 		 ss.cancelFacture(66L);
 		 Mockito.verify(sr, times(0)).delete(facture);
 	};
-//	};
 
 }
