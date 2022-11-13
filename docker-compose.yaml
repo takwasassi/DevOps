@@ -19,7 +19,7 @@ services:
   #Back-end Spring Boot Application
   springboot-app:
     #The docker file in BE, build the jar and provides the docker image.
-    image: wadiijh/springbootachat1:latest
+    image: takwaasassi/springbootachat1:latest
     container_name: springboot-app
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/achatdb?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
