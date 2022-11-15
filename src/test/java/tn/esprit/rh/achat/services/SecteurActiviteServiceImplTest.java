@@ -1,5 +1,5 @@
 package tn.esprit.rh.achat;
-
+import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 //import static org.junit.Assert.assertEquals;
@@ -45,6 +45,12 @@ public class SecteurActiviteServiceImplTest {
 
 		assertThat(secteuradd.getIdSecteurActivite()).isSameAs(secteuradd.getIdSecteurActivite());
 	}
+	
+	 @Test
+    	public void getSecteur(){
+        	Iterable<SecteurActivite> Lsecteur = sr.findAll();
+        	//Assertions.assertNotNull(Lsecteur);
+    	}
 
 	@Test
 	public void RetrieveAllSecteurActiviteTest() {
