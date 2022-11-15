@@ -61,9 +61,8 @@ public class SecteurActiviteServiceImplTest {
 
 	@Test
 	public void DeleteSecteurActiviteTest() {
-		SecteurActivite secteur = new SecteurActivite();
-		secteur.setCodeSecteurActivite("123");
-		secteur.setLibelleSecteurActivite("sport");
+		SecteurActivite secteur = new SecteurActivite("xq45isdby","secteur");
+		
 		
 		// ss.deleteSecteurActivite(66L);
 		 //Mockito.verify(sr, times(0)).delete(secteur);
