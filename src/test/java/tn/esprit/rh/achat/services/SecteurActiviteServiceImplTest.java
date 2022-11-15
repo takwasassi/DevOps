@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+package tn.esprit.rh.achat;
 
 import java.util.Optional;
 
@@ -15,9 +15,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.esprit.examen.repositories.SecteurActiviteRepository;
-import com.esprit.examen.services.SecteurActiviteServiceImpl;
-import com.esprit.examen.entities.SecteurActivite;
+
+
+
+import tn.esprit.rh.achat.entities.SecteurActivite;
+import tn.esprit.rh.achat.repositories.SecteurActiviteRepository;
+import tn.esprit.rh.achat.services.SecteurActiviteServiceImpl;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
