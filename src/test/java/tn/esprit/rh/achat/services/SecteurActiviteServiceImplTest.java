@@ -35,7 +35,7 @@ public class SecteurActiviteServiceImplTest {
 	@InjectMocks
 	SecteurActiviteServiceImpl ss;
 
-	@Test
+	
 	public void testAddSecteur() {
 		
 		SecteurActivite s = new SecteurActivite("xq45isdby","secteur");
@@ -47,7 +47,7 @@ public class SecteurActiviteServiceImplTest {
 		assertThat(secteuradd.getIdSecteurActivite()).isSameAs(secteuradd.getIdSecteurActivite());
 	}
 
-	@Test
+	
 	public void RetrieveAllSecteurActiviteTest() {
 		List<SecteurActivite> secteur = new ArrayList<>();
 		secteur.add(new SecteurActivite());
