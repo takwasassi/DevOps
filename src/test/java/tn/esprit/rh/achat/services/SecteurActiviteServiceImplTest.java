@@ -60,7 +60,7 @@ public class SecteurActiviteServiceImplTest {
 		assertEquals(expected, secteur);
 		verify(sr).findAll();
 	}
-
+	/*
 	@Test
 	public void DeleteSecteurActiviteTest() {
 		SecteurActivite secteur = new SecteurActivite("xq45isdby","secteur");
@@ -72,6 +72,6 @@ public class SecteurActiviteServiceImplTest {
 		SecteurActivite savedSecteur= ss.addSecteurActivite(secteur);
         	ss.deleteSecteurActivite(savedSecteur.getIdSecteurActivite());
         	//assertNull(ss.retrieveSecteurActivite(savedSecteur.getIdSecteurActivite()));
-	};
+	}; */
 
 }
