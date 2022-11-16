@@ -31,7 +31,7 @@ pipeline {
 					}
 				}
 			}
-			stage ('Nexus Repo') {
+			stage ('Maven deploy into nexus') {
 				steps {
 					sh 'mvn deploy Dskiptests'
 				}
