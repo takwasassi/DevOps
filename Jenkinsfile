@@ -6,6 +6,11 @@ pipeline {
 					git branch: 'nader', url: 'https://github.com/takwasassi/DevOps.git'
 				}
 			}
+			stage ('Junit testing') {
+				steps {
+					sh 'mvn test'
+				}
+			}
 			
 		}
 }
