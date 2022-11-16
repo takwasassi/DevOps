@@ -26,17 +26,19 @@ pipeline {
             }
         }
         
+        stage('deploy to nexus') {
+            steps {
+                sh 'mvn -Dmaven.test.skip=true deploy'
+            }
+        }
+        
         stage('MVN SONARQUBE'){
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
             }
         }
         
-        stage('deploy to nexus') {
-            steps {
-                sh 'mvn -Dmaven.test.skip=true deploy'
-            }
-        }
+        
         
         
         
